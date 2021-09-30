@@ -32,7 +32,8 @@ def main():
     path.getmtime("textfile.txt")
   )
 
-  print ("It has been " + str(tdiff) + " since the file was modified.")
+  print ("It has been " + str(tdiff) + " since the file was modified, ")
+  print ("or " + str(tdiff.total_seconds()) + " seconds.")
   
 if __name__ == "__main__":
   main()

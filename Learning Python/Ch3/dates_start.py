@@ -1,7 +1,7 @@
 #
 # Example file for working with date information
 #
-from datetime import date as d
+from datetime import date
 from datetime import time
 from datetime import datetime as dt
 

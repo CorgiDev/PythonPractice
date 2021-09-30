@@ -2,8 +2,9 @@
 # Example file for working with date information
 #
 from datetime import date as d
-from datetime import time as t
+from datetime import time
 from datetime import datetime as dt
+
 def WeekdayName(arg):
         switcher = {
             0: "Monday",
@@ -34,9 +35,12 @@ def main():
   
   ## DATETIME OBJECTS
   # Get today's date from the datetime class
-
+  today2 = dt.now()
+  print ("The current date and time is: ", today2)
   
   # Get the current time
+  t = dt.time(dt.now())
+  print (t)
 
 
 if __name__ == "__main__":

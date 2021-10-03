@@ -1,4 +1,4 @@
-# Given a Matrix of numbers, pick one number from each row.
+# Given a 2D Array of numbers, pick one number from each row.
 #
 # 1 2 3 4 9
 # 9 4 5 6 3

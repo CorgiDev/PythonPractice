@@ -19,8 +19,8 @@
 # Try to maximize the end total.
 #############################################################################
 
-numberMatrix = [[1,2,3,4,9],[9,4,5,6,3],[3,4,5,6,7]]
-# numberMatrix = [[15,21,39,45,9],[95,12,50,16,30],[34,47,52,20,7]]
+#numberMatrix = [[1,2,3,4,9],[9,4,5,6,3],[3,4,5,6,7]]
+numberMatrix = [[15,21,39,45,9],[95,12,50,16,30],[34,47,52,20,7]]
 
 selection = []
 maxTotal = 0
@@ -58,10 +58,11 @@ for row in range(len(numberMatrix)):
     selection.append(highestValue)
     print("") # Merely for asthetics and improved readability
 
-# Lets us confirm what was selected
+print("The following are the max values, after peanlty subtraction, selected from each row:")
 print(selection)
 
 # Add new value to the total
 maxTotal = sum(selection)
 
+print("") # Merely for asthetics and improved readability
 print ("The highest total obtainable from this matrix is", maxTotal)

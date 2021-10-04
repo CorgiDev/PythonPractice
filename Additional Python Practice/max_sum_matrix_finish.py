@@ -32,14 +32,17 @@ for row in range(len(numberMatrix)):
     print("Currently checking row #", row)
 
     for col in range(len(numberMatrix[row])):        
+        totValue = 0
+
         # Set the penalty (-1 indicates first row which gets 0 penalty by default)
         if prevCharLoc == -1:
             penalty = 0
+            # Calculate the value of the number after considering penalty
+            totValue = numberMatrix[row][col]
         elif col != prevCharLoc:
             penalty = abs((col+1)-(prevCharLoc+1)) # The +1 ensures penalty still gets calculated if the the number is in the 0 column
-
-        # Calculate the value of the number after considering penalty
-        totValue = numberMatrix[row][col]-penalty
+            # Calculate the value of the number after considering penalty
+            totValue = numberMatrix[row][col]-penalty
 
         # Replace the highest value for the row with the new value if it is higher
         if totValue > highestValue:
@@ -66,3 +69,8 @@ maxTotal = sum(selection)
 
 print("") # Merely for asthetics and improved readability
 print ("The highest total obtainable from this matrix is", maxTotal)
+
+# TODO: Need to alter to actually get the max value. 
+# Second row impacts potential penalty in 3rd row, 
+# and so on if there are more rows. So you have to think
+# beyond just the penalty faced by the second row.

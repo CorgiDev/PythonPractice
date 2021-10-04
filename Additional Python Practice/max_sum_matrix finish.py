@@ -20,21 +20,25 @@
 #############################################################################
 
 numberMatrix = [[1,2,3,4,9],[9,4,5,6,3],[3,4,5,6,7]]
+# numberMatrix = [[15,21,39,45,9],[95,12,50,16,30],[34,47,52,20,7]]
 
 selection = []
 maxTotal = 0
-prevCharLoc = 0
+prevCharLoc = -1
 newCharLoc = 0
 
 for row in range(len(numberMatrix)):
     highestValue = 0
-
     for col in range(len(numberMatrix[row])):
+        print("Currently checking column #", col, "in row #", row)
         currentValue = numberMatrix[row][col]
         totalValue = 0
         
         # Set the penalty
-        penalty = abs(col-prevCharLoc)
+        if prevCharLoc == -1:
+            penalty = ((col+1)-(prevCharLoc+1)) # The +1 compensates for instances where one character may be in the 0 spot
+        elif col != prevCharLoc:
+            penalty = abs((col+1)-(prevCharLoc+1))
 
         # Calculate the value of the number after considering penalty
         totValue = currentValue-penalty
@@ -48,9 +52,10 @@ for row in range(len(numberMatrix)):
     if newCharLoc != prevCharLoc:
             prevCharLoc = newCharLoc
     
-    print("The number selected from Row #", row , "is ", highestValue)
+    print("The number selected from Row #", row , "is", highestValue)
 
     # Add new highest value to selection list
+    print("The new highest value is", highestValue)
     selection.append(highestValue)
 
 # Lets us confirm what was selected

@@ -29,34 +29,34 @@ newCharLoc = 0
 
 for row in range(len(numberMatrix)):
     highestValue = 0
-    for col in range(len(numberMatrix[row])):
-        print("Currently checking column #", col, "in row #", row)
-        currentValue = numberMatrix[row][col]
-        totalValue = 0
-        
-        # Set the penalty
+    print("Currently checking row #", row)
+
+    for col in range(len(numberMatrix[row])):        
+        # Set the penalty (-1 indicates first row which gets 0 penalty by default)
         if prevCharLoc == -1:
-            penalty = ((col+1)-(prevCharLoc+1)) # The +1 compensates for instances where one character may be in the 0 spot
+            penalty = 0
         elif col != prevCharLoc:
-            penalty = abs((col+1)-(prevCharLoc+1))
+            penalty = abs((col+1)-(prevCharLoc+1)) # The +1 ensures penalty still gets calculated if the the number is in the 0 column
 
         # Calculate the value of the number after considering penalty
-        totValue = currentValue-penalty
+        totValue = numberMatrix[row][col]-penalty
 
-        # Replace the highest value with the new value if it is higher
+        # Replace the highest value for the row with the new value if it is higher
         if totValue > highestValue:
            highestValue = totValue
+           # Ensures the character's location gets tracked so it can be used for calculating penalty on next row
            newCharLoc = col
     
     # Once a number is selected for the row, update prevCharLoc if needed
     if newCharLoc != prevCharLoc:
             prevCharLoc = newCharLoc
-    
+
     print("The number selected from Row #", row , "is", highestValue)
 
     # Add new highest value to selection list
     print("The new highest value is", highestValue)
     selection.append(highestValue)
+    print("") # Merely for asthetics and improved readability
 
 # Lets us confirm what was selected
 print(selection)
